@@ -8,9 +8,8 @@ public class AppCliente {
         String ip = "localhost";
         
         SocketCliente cliente = new SocketCliente(ip, porta);
-        Conexao conexao = new Conexao();
+        Conexao conexao = new Conexao();        
         
-        ThreadFilho test = new ThreadFilho(ip);
 
         cliente.encerraCliente();
     }
