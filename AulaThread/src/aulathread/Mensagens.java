@@ -14,6 +14,15 @@ import java.io.Serializable;
 public class Mensagens implements Serializable{
     private String message; 
 
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String User) {
+        this.User = User;
+    }
+    private String User;
+
     public String getMessage() {
         return message;
     }

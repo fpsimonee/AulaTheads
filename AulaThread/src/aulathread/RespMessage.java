@@ -13,6 +13,15 @@ import java.io.Serializable;
  */
 public class RespMessage implements Serializable{
     private String respMessage; 
+    private String User;
+
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String User) {
+        this.User = User;
+    }
 
     public String getRespMessage() {
         return respMessage;
