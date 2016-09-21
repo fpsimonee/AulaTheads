@@ -1,6 +1,6 @@
 package aulathread;
 
-public class AppServidor {
+public class AppServidor implements Runnable{
 
     public static void main(String args[]) {
 
@@ -16,5 +16,10 @@ public class AppServidor {
             servidor.encerraServidor();
         }
 
+    }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
