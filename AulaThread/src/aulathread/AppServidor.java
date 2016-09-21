@@ -1,25 +1,34 @@
 package aulathread;
 
-public class AppServidor implements Runnable{
+public class AppServidor extends Thread{
 
-    public static void main(String args[]) {
+//    public static void main(String args[]) {
+//
+//        
+//
+//    }
 
-        int porta = 9600;
+    @Override
+    public void run() {
+   int porta = 9600;
         String texto;
         
         SocketServidor servidor = new SocketServidor(porta);
         Conexao conexao = new Conexao();
+        
+        
 
         if (servidor.connect()) {
+            Mensagens msg = (Mensagens) conexao.receive(servidor.getClientSocket());
+                String nome = msg.getUser();
+                String mensage = msg.getMessage();
+                
+                RespMessage resposta = new RespMessage();
+                resposta.setRespMessage("Conectado ao servidor!");
+                resposta.setUser("Servidor");
         
-//               conexao.send(servidor.getClientSocket(), resultado);
+               conexao.send(servidor.getClientSocket(), resposta);
             servidor.encerraServidor();
         }
-
-    }
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -1,21 +1,34 @@
 package aulathread;
 
-public class AppCliente implements Runnable{
+public class AppCliente extends Thread{
 
-    public static void main(String args[]) {
-        
+//    public static void main(String args[]) {
+//        
+//        
+//    }
+
+    @Override
+    public void run() {
         int porta = 9600;
         String ip = "localhost";
         
         SocketCliente cliente = new SocketCliente(ip, porta);
-        Conexao conexao = new Conexao();        
+        Conexao conexao = new Conexao();  
         
-
+        Mensagens ms1 = new Mensagens();
+        ms1.setMessage("Ola, Mundo!!");
+        ms1.setUser("Felipe");
+        
+        conexao.send(cliente.getSocket(), ms1);
+        
+        RespMessage RespMessage = (RespMessage) conexao.receive(cliente.getSocket());
+        
+        System.out.println(ms1.getUser()+" diz:");
+        System.out.println(ms1.getMessage());
+        
+        System.out.println(RespMessage.getUser()+" diz:");
+        System.out.println(RespMessage.getRespMessage());
+        
         cliente.encerraCliente();
-    }
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
